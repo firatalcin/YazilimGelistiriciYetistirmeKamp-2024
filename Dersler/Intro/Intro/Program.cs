@@ -1,4 +1,5 @@
 ﻿using Intro.Business;
+using Intro.DataAccess.Concrete;
 using Intro.Entities;
 
 namespace Intro
@@ -29,10 +30,10 @@ namespace Intro
                 Console.WriteLine(loans[i]);
             }
 
-            CourseManager courseManager = new CourseManager();
-            Course[] courses = courseManager.GetAll();
+            CourseManager courseManager = new CourseManager(new CourseDal());
+            List<Course> courses = courseManager.GetAll();
 
-            for (int i = 0; i < courses.Length; i++)
+            for (int i = 0; i < courses.Count; i++)
             {
                 Console.WriteLine(courses[i].Name + " - " + courses[i].Price);
             }
