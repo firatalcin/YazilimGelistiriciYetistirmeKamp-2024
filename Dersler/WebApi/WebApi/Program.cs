@@ -1,3 +1,7 @@
+using Business.Concretes;
+using Business.Abstracts;
+using DataAccess.Abstracts;
+using DataAccess.Concretes;
 
 namespace WebApi
 {
@@ -13,6 +17,10 @@ namespace WebApi
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddScoped<IBrandDal, BrandDal>();
+            builder.Services.AddScoped<IBrandService,  BrandManager>();
+
 
             var app = builder.Build();
 
